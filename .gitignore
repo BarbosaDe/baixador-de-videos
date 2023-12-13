@@ -1,3 +1,7 @@
+# Ignorar ambientes virtuais
 venv
+
+
+# Ignorar arquivo de cache do python
 *__pycache__
 *.pyc

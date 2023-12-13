@@ -14,7 +14,7 @@ def info(request):
     if request.method == "GET": return
 
     link = request.POST['video_id']
-
+    tl.filter()
     return HttpResponse(link)
     
 
