@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Download</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <form id="Search" action="{% url 'info' %}" method="post"> {% csrf_token %}
+            <input type="text" name="video_id" placeholder="link aqui"> <br>
+            <button type="submit">Pesquisar</button>
+        </form>
+
+
+        {% if active_download %}
+
+        <div class="details">
+            <h3>{{nome}}</h3>
+            <img src="{{thumb}}" width="300">
+            <small>{{autor}}</small>
+        </div>
+
+        <div class="downloads">
+            <div class="control">
+                <h4>Audio(mp3)</h4><br>
+                <a href="/d/{{id_video}}-mp3">Baixar</a>
+            </div>
+
+            <div class="control">
+                <h4>Video(mp4)</h4><br>
+                <a href="/d/{{id_video}}-144p">144p - Baixar</a><br>
+                <a href="/d/{{id_video}}-360p">360p - Baixar</a><br>
+                <a href="/d/{{id_video}}-720p">720p - Baixar</a><br>
+                <a href="/d/{{id_video}}-1080p">1080p - Baixar</a><br>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>
